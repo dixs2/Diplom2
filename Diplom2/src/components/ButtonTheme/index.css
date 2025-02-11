@@ -1,0 +1,16 @@
+.button-theme {
+  background-color: rgba(1, 1, 1, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.button-theme-dark,
+.button-theme-light {
+  font-size: 24px;
+}
+.button-theme-light {
+  color: rgb(255, 251, 0);
+}

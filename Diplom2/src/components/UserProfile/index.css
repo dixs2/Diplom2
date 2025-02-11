@@ -1,0 +1,12 @@
+.user-profile {
+  display: inline-block;
+  padding: 12px 24px;
+  color: #fff;
+}
+
+.user-name--short {
+  display: inline;
+  padding: 8px;
+  background-color: rgb(21, 33, 139);
+  margin-right: 8px;
+}

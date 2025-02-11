@@ -1,0 +1,24 @@
+.main-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+  background-color: rgb(85, 93, 239);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.main-header-content {
+  padding: 0px 15px;
+  width: 100%;
+  max-width: 1380px;
+  min-width: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-header-content-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

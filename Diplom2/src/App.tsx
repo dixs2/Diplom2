@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import MainContainer from "./components/MainContainer";
 import ThemeContextProvider from "./context/Theme.Provider";
 import MainPage from "./pages/MainPage";
+import WorldMap from "./pages/WorldMap";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <ThemeContextProvider>
         <Header></Header>
         <MainContainer>
-          <MainPage></MainPage>
+          <WorldMap></WorldMap>
         </MainContainer>
       </ThemeContextProvider>
     </>

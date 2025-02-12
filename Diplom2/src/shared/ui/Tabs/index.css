@@ -1,0 +1,19 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tabs-button-wrap {
+  display: flex;
+  gap: 10px;
+}
+.tabs-button {
+  padding: 10px 15px;
+  background-color: rgba(1, 1, 1, 0);
+  font-size: 20px;
+  border: none;
+  color: var(--tab-color);
+}
+.tabs-button.active {
+  border-bottom: 2px solid var(--tab-color);
+}

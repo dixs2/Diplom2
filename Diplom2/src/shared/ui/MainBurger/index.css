@@ -1,9 +1,9 @@
-.burger-button-icon {
+.main-burger-button-icon {
   font-size: 24px;
   font-weight: 600;
   color: white;
 }
-.burger-button {
+.main-burger-button {
   background-color: rgba(0, 0, 255, 0);
   display: flex;
   justify-content: center;

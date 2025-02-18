@@ -1,4 +1,4 @@
-import Burger from "../../shared/ui/Burger";
+import Burger from "../../shared/ui/MainBurger";
 import ButtomTheme from "../ButtonTheme";
 import UserProfile from "../UserProfile";
 import "./index.css";

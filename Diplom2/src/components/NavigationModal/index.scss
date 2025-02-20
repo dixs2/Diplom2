@@ -1,0 +1,27 @@
+.modal-navigation {
+  position: absolute;
+  top: 100%;
+  left: 15px;
+  width: 270px;
+  min-height: 60vh;
+  z-index: 30;
+  background-color: var(--modal-navigation-bg-color);
+  display: none;
+}
+.modal-navigation.active {
+  display: block;
+}
+.modal-navigation-content {
+  padding: 20px 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.modal-navigation-link {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--modal-navigation-link-color);
+}

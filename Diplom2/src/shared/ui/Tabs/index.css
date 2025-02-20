@@ -1,7 +1,7 @@
 .tabs {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 35px;
 }
 .tabs-button-wrap {
   display: flex;

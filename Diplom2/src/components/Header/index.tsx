@@ -1,5 +1,6 @@
-import Burger from "../../shared/ui/MainBurger";
+import BurgerNav from "../../shared/ui/BurgerNav";
 import ButtomTheme from "../ButtonTheme";
+import NavigationModal from "../NavigationModal";
 import UserProfile from "../UserProfile";
 import "./index.css";
 
@@ -8,7 +9,8 @@ export default function Header() {
     <header className="main-header">
       <div className="main-header-content">
         <div className="main-header-content-left">
-          <Burger></Burger>
+          <BurgerNav></BurgerNav>
+          <NavigationModal></NavigationModal>
         </div>
         <div className="main-header-content-right">
           <ButtomTheme></ButtomTheme>

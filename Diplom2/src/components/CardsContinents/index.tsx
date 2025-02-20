@@ -33,7 +33,12 @@ export default function CardsContinentsColum({
         return (
           <div className="card-continent-colum">
             {oldViewContinents.map((continent) => {
-              return <CardContinent continent={continent}></CardContinent>;
+              return (
+                <CardContinent
+                  continent={continent}
+                  key={continent.title}
+                ></CardContinent>
+              );
             })}
           </div>
         );

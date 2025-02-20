@@ -4,12 +4,19 @@
   --text-header-color: #e9eaec;
   --primary-color: #646cff;
   --primary-hover: #747bff;
+  --text-color: rgb(13, 12, 84);
   --title-color: rgb(13, 12, 84);
   --tab-color: rgb(13, 12, 84);
+  --signInForm-box-shadow-color: rgb(13, 12, 84);
+  --button-bg: rgb(13, 12, 84);
+  --button-text-color: #e9eaec;
+  --modal-navigation-bg-color: rgb(17, 16, 99);
+  --modal-navigation-link-color: #e9eaec;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --header-heaght: 60px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,10 +31,15 @@
   --primary-color: #646cff;
   --primary-hover: #535bf2;
   --card-title-color: rgb(237, 237, 237);
+  --text-color: rgb(237, 237, 237);
   --title-color: rgb(237, 237, 237);
   --tab-color: rgb(237, 237, 237);
+  --signInForm-box-shadow-color: rgb(237, 237, 237);
+  --button-bg: #d3d3d3;
+  --button-text-color: rgb(13, 12, 84);
+  --modal-navigation-bg-color: #e9eaec;
+  --modal-navigation-link-color: rgb(17, 16, 99);
 }
-
 body {
   min-width: 320px;
   min-height: 100vh;

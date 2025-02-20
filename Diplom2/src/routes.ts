@@ -1,5 +1,7 @@
 const routes = {
-  main: "/",
+  home: "/",
   worldMap: "/worldMap",
+  continent: (continent: string) => `/worldMap/${continent}`,
+  signIn: "/signIn",
 };
 export default routes;

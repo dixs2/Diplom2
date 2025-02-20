@@ -8,11 +8,13 @@ export interface Tab {
 
 interface TabsProps {
   tabs: Tab[];
+  onChangeTab?: (index: number) => void;
+  activeIndexTab?: number;
 }
 
-export default function Tabs({ tabs }: TabsProps) {
+export default function Tabs({ tabs, onChangeTab, activeIndexTab }: TabsProps) {
   const [activeIndex, setActiveIndex] = useState<Number>(
-    Number(localStorage.getItem("activeIndex"))
+    activeIndexTab ?? Number(localStorage.getItem("activeIndex"))
   );
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export default function Tabs({ tabs }: TabsProps) {
 
   const handleClickOnLabel = (index: number) => {
     setActiveIndex(index);
+    onChangeTab?.(index);
   };
 
   return (

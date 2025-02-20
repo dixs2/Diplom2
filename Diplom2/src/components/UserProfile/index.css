@@ -1,12 +1,12 @@
-.user-profile {
+.user-name {
   display: inline-block;
-  padding: 12px 24px;
-  color: #fff;
+  color: var(--text-header-color);
 }
 
 .user-name--short {
   display: inline;
-  padding: 8px;
+  padding: 8px 10px;
+  color: var(--text-header-color);
   background-color: rgb(21, 33, 139);
   margin-right: 8px;
 }

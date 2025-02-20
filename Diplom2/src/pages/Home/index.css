@@ -1,0 +1,14 @@
+.home-section {
+  width: 100%;
+  min-height: calc(100vh - var(--header-heaght));
+  overflow: hidden;
+  background-image: url("../../../public/world.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

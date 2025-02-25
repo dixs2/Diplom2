@@ -9,7 +9,7 @@ interface CardContinentProps {
 
 export default function CardContinent({ continent }: CardContinentProps) {
   return (
-    <NavLink to={routes.continent(continent.title)}>
+    <NavLink to={routes.country(continent.title)}>
       <div className="continent-card">
         <div className="continent-card-content">
           <h3 className="continent-card-title">{continent.title}</h3>

@@ -3,7 +3,6 @@ import "./App.css";
 import Header from "./components/Header";
 import MainContainer from "./components/MainContainer";
 import ThemeContextProvider from "./context/Theme.Provider";
-import MainPage from "./pages/Home";
 import WorldMap from "./pages/WorldMap";
 import routes from "./routes";
 import SingIn from "./pages/SignIn";
@@ -21,7 +20,7 @@ function App() {
           <MainContainer>
             <Routes>
               <Route path={routes.home} element={<Home></Home>}></Route>
-              <Route path={`${routes.worldMap}`}>
+              <Route path={routes.worldMap}>
                 <Route index element={<WorldMap></WorldMap>} />
                 <Route
                   path=":continentId"

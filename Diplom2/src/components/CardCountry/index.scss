@@ -1,11 +1,11 @@
-.continent-card {
+.country-card {
   width: 100%;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
   position: relative;
 }
-.continent-card:hover::before {
+.country-card:hover::before {
   content: "";
   position: absolute;
   z-index: 7;
@@ -13,28 +13,28 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.573);
 }
-.continent-card:hover .continent-card-title {
+.country-card:hover .country-card-title {
   color: aliceblue;
   transition: 0.5s;
 }
-.continent-card-content {
+.country-card-content {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
-.continent-card-title {
+.country-card-title {
   text-align: center;
   color: rgba(231, 231, 231, 0);
   z-index: 8;
   position: absolute;
 }
-.continent-card-photo-wrap {
+.country-card-photo-wrap {
   width: 100%;
   overflow: hidden;
 
-  .continent-card-photo {
+  .country-card-photo {
     width: 100%;
     height: auto;
     vertical-align: middle;

@@ -1,3 +1,15 @@
+import { useGetCountryQuery } from "../../../api/endpoints/worldMap";
+import CardsCountrys from "../../../components/CardsCountrys";
+
 export default function Asia() {
-  return <div className="continent asia">North America</div>;
+  const { data, isError, status } = useGetCountryQuery("Asia");
+
+  const renderPosts = () => {
+    if (isError) {
+      return isError;
+    }
+    if (status === "fulfilled") return <CardsCountrys countries={data} />;
+  };
+
+  return <>{renderPosts()}</>;
 }

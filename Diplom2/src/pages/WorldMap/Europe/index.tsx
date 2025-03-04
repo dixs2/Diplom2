@@ -1,6 +1,15 @@
-import CardsContinentsColum from "../../../components/CardsContinents";
-import { dataEurope } from "../../../mock/dataEurope";
+import { useGetCountryQuery } from "../../../api/endpoints/worldMap";
+import CardsCountrys from "../../../components/CardsCountrys";
 
 export default function Europe() {
-  return <CardsContinentsColum countries={dataEurope} />;
+  const { data, isError, status } = useGetCountryQuery("Europe");
+
+  const renderPosts = () => {
+    if (isError) {
+      return isError;
+    }
+    if (status === "fulfilled") return <CardsCountrys countries={data} />;
+  };
+
+  return <>{renderPosts()}</>;
 }

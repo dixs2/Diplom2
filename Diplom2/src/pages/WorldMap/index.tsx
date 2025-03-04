@@ -55,7 +55,7 @@ export default function WorldMap() {
         <Tabs
           tabs={tabs}
           onChangeTab={onChangeTab}
-          activeIndexTab={initialActiveTab}
+          activeIndexTab={initialActiveTab ?? 0}
         ></Tabs>
       </div>
     </section>

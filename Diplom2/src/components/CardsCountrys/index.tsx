@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { dataContinent } from "../../mock/type";
-import CardContinent from "../CardContinent";
+import { DataCountry } from "../CardCountry/type";
+import CardContinent from "../CardCountry";
 import "./index.scss";
 
-export function splitByColum(continents: dataContinent[], colum: number) {
-  const newContinents: dataContinent[][] = [];
+export function splitByColum(continents: DataCountry[], colum: number) {
+  const newContinents: DataCountry[][] = [];
 
   for (let i = 1; i <= colum; i++) {
     newContinents.push([]);
@@ -17,8 +17,8 @@ export function splitByColum(continents: dataContinent[], colum: number) {
   return newContinents;
 }
 
-interface CardsContinentsProps {
-  countries: dataContinent[];
+interface CardsCountrysProps {
+  countries: DataCountry[];
 }
 
 const getCountColumn = () => {
@@ -39,18 +39,10 @@ const getCountColumn = () => {
   return 4;
 };
 
-export default function CardsContinentsColum({
-  countries,
-}: CardsContinentsProps) {
-  const countRender = useRef(0);
+export default function CardsCountrys({ countries }: CardsCountrysProps) {
   const [column, setColumn] = useState(getCountColumn());
 
   const newViewContinents = splitByColum(countries, column);
-
-  useEffect(() => {
-    countRender.current += 1;
-    console.log("countRender", countRender.current);
-  });
 
   useEffect(() => {
     let resizeTimeout: number | undefined;
@@ -77,11 +69,11 @@ export default function CardsContinentsColum({
       {newViewContinents.map((oldViewContinents) => {
         return (
           <div className="card-continent-colum">
-            {oldViewContinents.map((continent) => {
+            {oldViewContinents.map((country) => {
               return (
                 <CardContinent
-                  continent={continent}
-                  key={continent.title}
+                  country={country}
+                  key={country.id}
                 ></CardContinent>
               );
             })}

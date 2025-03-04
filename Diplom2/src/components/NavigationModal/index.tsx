@@ -2,11 +2,11 @@ import { NavLink } from "react-router";
 import routes from "../../routes";
 import "./index.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { State } from "../../store/reducer";
-import { hideNavModal } from "../../store/actions";
+import { useSelectShowNavModal } from "../../store/selectors";
+import { hideNavModal } from "../../store/navModal";
 
 export default function NavigationModal() {
-  const isOpen = useSelector((state: State) => state.isOpenNavModal);
+  const isOpen = useSelectShowNavModal();
   const dispatch = useDispatch();
   return (
     <div

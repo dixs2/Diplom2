@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
-import { hideNavModal, showNavModal } from "../../../store/actions";
-import { State } from "../../../store/reducer";
+import { useSelectShowNavModal } from "../../../store/selectors";
+import { hideNavModal, showNavModal } from "../../../store/navModal";
 
 export default function BurgerNav() {
-  const isOpen = useSelector((state: State) => state.isOpenNavModal);
+  const isOpen = useSelectShowNavModal();
   const dispatch = useDispatch();
   const handlClick = () => {
     isOpen ? dispatch(hideNavModal()) : dispatch(showNavModal());

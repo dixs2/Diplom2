@@ -6,10 +6,10 @@ import ThemeContextProvider from "./context/Theme.Provider";
 import WorldMap from "./pages/WorldMap";
 import routes from "./routes";
 import SingIn from "./pages/SignIn";
-import SelectedContinent from "./pages/SelectedContinent";
 import { Provider } from "react-redux";
-import { store } from "./store/store";
 import Home from "./pages/Home";
+import { store } from "./store";
+import SelectedCountry from "./pages/SelectedContinent";
 
 function App() {
   return (
@@ -23,8 +23,8 @@ function App() {
               <Route path={routes.worldMap}>
                 <Route index element={<WorldMap></WorldMap>} />
                 <Route
-                  path=":continentId"
-                  element={<SelectedContinent></SelectedContinent>}
+                  path=":continentTitle/:countryTitle"
+                  element={<SelectedCountry></SelectedCountry>}
                 ></Route>
               </Route>
               <Route path={routes.signIn} element={<SingIn></SingIn>}></Route>

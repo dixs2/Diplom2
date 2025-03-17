@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import Home from "./pages/Home";
 import { store } from "./store";
 import SelectedCountry from "./pages/SelectedContinent";
+import MyWorldMap from "./pages/MyWorldMap";
 
 function App() {
   return (
@@ -22,6 +23,13 @@ function App() {
               <Route path={routes.home} element={<Home></Home>}></Route>
               <Route path={routes.worldMap}>
                 <Route index element={<WorldMap></WorldMap>} />
+                <Route
+                  path=":continentTitle/:countryTitle"
+                  element={<SelectedCountry></SelectedCountry>}
+                ></Route>
+              </Route>
+              <Route path={routes.myWorldMap}>
+                <Route index element={<MyWorldMap></MyWorldMap>} />
                 <Route
                   path=":continentTitle/:countryTitle"
                   element={<SelectedCountry></SelectedCountry>}

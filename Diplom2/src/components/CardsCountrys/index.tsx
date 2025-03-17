@@ -51,7 +51,6 @@ export default function CardsCountrys({ countries }: CardsCountrysProps) {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         const newColumn = getCountColumn();
-        console.log(newColumn);
         setColumn(newColumn);
       }, 200);
     };

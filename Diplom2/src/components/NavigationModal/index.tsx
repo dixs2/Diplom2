@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import routes from "../../routes";
 import "./index.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useSelectShowNavModal } from "../../store/selectors";
 import { hideNavModal } from "../../store/navModal";
 
@@ -19,6 +19,9 @@ export default function NavigationModal() {
         </NavLink>
         <NavLink to={routes.worldMap} end className="modal-navigation-link">
           World Map
+        </NavLink>
+        <NavLink to={routes.myWorldMap} end className="modal-navigation-link">
+          My World Map
         </NavLink>
       </nav>
     </div>

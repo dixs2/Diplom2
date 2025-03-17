@@ -10,7 +10,7 @@ import NorthAmerica from "./NorthAmerica";
 import SouthAmerica from "./SouthAmerica";
 import { useMemo } from "react";
 
-const tabs: Tab[] = [
+const tabsWorldMap: Tab[] = [
   {
     label: "Africa",
     component: <Africa></Africa>,
@@ -41,11 +41,13 @@ export default function WorldMap() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const onChangeTab = (index: number) => {
-    setSearchParams({ continent: tabs[index].label });
+    setSearchParams({ continent: tabsWorldMap[index].label });
   };
 
   const initialActiveTab = useMemo(() => {
-    return tabs.findIndex((tab) => tab.label === searchParams.get("continent"));
+    return tabsWorldMap.findIndex(
+      (tabWorldMap) => tabWorldMap.label === searchParams.get("continent")
+    );
   }, []);
 
   return (
@@ -53,7 +55,7 @@ export default function WorldMap() {
       <div className="world-map-content">
         <TitleSection>Countries of the World</TitleSection>
         <Tabs
-          tabs={tabs}
+          tabs={tabsWorldMap}
           onChangeTab={onChangeTab}
           activeIndexTab={initialActiveTab ?? 0}
         ></Tabs>

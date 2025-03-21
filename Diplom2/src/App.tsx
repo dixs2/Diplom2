@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import { store } from "./store";
 import SelectedCountry from "./pages/SelectedContinent";
 import MyWorldMap from "./pages/MyWorldMap";
+import Registration from "./pages/Registration";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
                 ></Route>
               </Route>
               <Route path={routes.signIn} element={<SingIn></SingIn>}></Route>
+              <Route
+                path={routes.registration}
+                element={<Registration></Registration>}
+              ></Route>
             </Routes>
           </MainContainer>
         </ThemeContextProvider>

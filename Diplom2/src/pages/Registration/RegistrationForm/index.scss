@@ -1,4 +1,4 @@
-.sign-in-form {
+.registration-form {
   display: flex;
   flex-direction: column;
   width: 450px;
@@ -9,29 +9,30 @@
   box-shadow: 0px 0px 5px var(--signInForm-box-shadow-color);
   background-color: var();
 }
-.sign-in-form-email,
-.sign-in-form-password {
+.registration-form-name,
+.registration-form-password,
+.registration-form-email {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.sign-in-form-label {
+.registration-form-label {
   font-size: 14px;
   color: var(--text-color);
 }
-.sign-in-form-input {
+.registration-form-input {
   font-size: 18px;
   font-weight: 400;
   padding: 5px 10px;
   background-color: rgba(255, 255, 255, 0.87);
 }
-.sign-in-form-button {
+.registration-form-button {
   background-color: var(--button-bg);
   font-size: 16px;
   font-weight: 600;
   padding: 10px 10px;
   color: var(--button-text-color);
 }
-.sign-in-form-text {
+.registration-form-text {
   text-align: center;
 }

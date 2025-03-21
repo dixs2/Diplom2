@@ -10,6 +10,7 @@ import MyEurope from "./MyEurope";
 import MySouthAmerica from "./MySouthAmerica";
 import "./index.scss";
 import { useGetUserQuery } from "../../api/endpoints/user";
+import ModalNotAuth from "../../shared/ui/ModalNotAuth";
 
 const tabsMyWorldMap: Tab[] = [
   {
@@ -42,8 +43,24 @@ export default function MyWorldMap() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { isError } = useGetUserQuery("");
 
-  if (isError) {
-  }
+  const render = () => {
+    if (isError) {
+      return <ModalNotAuth></ModalNotAuth>;
+    } else {
+      return (
+        <section className="my-world-map-section">
+          <div className="my-world-map-content">
+            <TitleSection>The continent i visited</TitleSection>
+            <Tabs
+              tabs={tabsMyWorldMap}
+              onChangeTab={onChangeTab}
+              activeIndexTab={initialActiveTab ?? 0}
+            ></Tabs>
+          </div>
+        </section>
+      );
+    }
+  };
   const onChangeTab = (index: number) => {
     setSearchParams({ continent: tabsMyWorldMap[index].label });
   };
@@ -54,16 +71,5 @@ export default function MyWorldMap() {
     );
   }, []);
 
-  return (
-    <section className="my-world-map-section">
-      <div className="my-world-map-content">
-        <TitleSection>The continent i visited</TitleSection>
-        <Tabs
-          tabs={tabsMyWorldMap}
-          onChangeTab={onChangeTab}
-          activeIndexTab={initialActiveTab ?? 0}
-        ></Tabs>
-      </div>
-    </section>
-  );
+  return <>{render()}</>;
 }

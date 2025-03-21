@@ -2,8 +2,9 @@ import { DataCountry } from "../../components/CardCountry/type";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../constant";
 import StorageService from "../../shared/service";
+import { NewUser } from "../../pages/Registration/RegistrationForm";
 
-interface User {
+export interface User {
   id: string;
   email: string;
   password: string;
@@ -18,7 +19,7 @@ interface User {
 }
 
 export const usersApi = createApi({
-  reducerPath: "myWorldMap",
+  reducerPath: "users",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getUser: builder.query<User[], string>({
@@ -30,7 +31,16 @@ export const usersApi = createApi({
         },
       }),
     }),
+    createUser: builder.mutation<User, NewUser>({
+      query: (body) => {
+        return {
+          url: "/users",
+          method: "POST",
+          body: { ...body },
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetUserQuery } = usersApi;
+export const { useGetUserQuery, useCreateUserMutation } = usersApi;

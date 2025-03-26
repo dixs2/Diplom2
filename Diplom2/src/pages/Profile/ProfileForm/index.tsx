@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useChangeUserMutation,
   useGetUserQuery,
@@ -9,15 +9,16 @@ import { useNavigate } from "react-router";
 import routes from "../../../routes";
 
 export default function ProfileForm() {
-  const { data, status } = useGetUserQuery("");
-  let user: User | undefined;
+  const { data } = useGetUserQuery("");
   const navigate = useNavigate();
   const [changeUser] = useChangeUserMutation();
-  if (status === "fulfilled") {
-    user = data !== undefined ? data[0] : undefined;
-  }
+  const [formValue, setFormValue] = useState<User | undefined>();
 
-  const [formValue, setFormValue] = useState<User | undefined>(user);
+  useEffect(() => {
+    if (data && data[0]) {
+      setFormValue(data[0]);
+    }
+  }, [data]);
 
   const handelChange =
     (key: keyof User) => (event: { target: { value: any } }) => {
@@ -29,9 +30,9 @@ export default function ProfileForm() {
     <form name="profileForm" className="profile-form">
       <div className="profile-form-content">
         <div className="profile-form-header">
-          <div className="profile-form-photo">
+          {/* <div className="profile-form-photo">
             <img src={user?.photo} alt="" />
-          </div>
+          </div> */}
           <div className="profile-form-data">
             <div className="profile-form-closed">
               <label className="profile-form-closed-label">

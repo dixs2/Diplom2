@@ -1,0 +1,10 @@
+.users-cards-column-wrap {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+}
+.users-cards-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

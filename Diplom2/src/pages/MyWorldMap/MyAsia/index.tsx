@@ -5,24 +5,18 @@ import { DataCountry } from "../../../components/CardCountry/type";
 import { Box } from "@mui/material";
 
 export default function MyAsia() {
-  const { data, isError, status } = useGetUserQuery("");
+  const { data, isError } = useGetUserQuery("");
   const renderPosts = () => {
     if (isError) {
       return isError;
     }
-    if (status === "fulfilled") {
-      let dataCountries: DataCountry[] = [];
-
-      if (data !== undefined) {
-        dataCountries = data[0].myAsia;
-      }
-      if (dataCountries.length === 0) {
+    if (data) {
+      if (data[0].myAsia.length === 0) {
         return (
           <Box textAlign={"center"}>"You have not been to this continent"</Box>
         );
       }
-
-      return <CardsCountrys countries={dataCountries} />;
+      return <CardsCountrys countries={data[0].myAsia} />;
     }
   };
 

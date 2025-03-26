@@ -42,7 +42,7 @@ const tabsMyWorldMap: Tab[] = [
 export default function MyWorldMap() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { isError } = useGetUserQuery("");
-
+  console.log();
   const render = () => {
     if (isError) {
       return <ModalNotAuth></ModalNotAuth>;

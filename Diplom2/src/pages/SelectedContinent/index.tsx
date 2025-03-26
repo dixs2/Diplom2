@@ -16,8 +16,9 @@ export default function SelectedCountry() {
     if (isError) {
       return isError;
     }
-    if (status === "fulfilled")
+    if (data) {
       return <SelectedCountryCard country={data[0]}></SelectedCountryCard>;
+    }
   };
 
   return <>{renderSelected()}</>;

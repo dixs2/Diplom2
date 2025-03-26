@@ -21,7 +21,7 @@ interface CardsCountrysProps {
   countries: DataCountry[];
 }
 
-const getCountColumn = () => {
+export const getCountColumn = () => {
   const width = document.documentElement.clientWidth;
 
   if (width < 500) {

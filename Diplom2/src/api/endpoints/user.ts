@@ -24,11 +24,11 @@ export const usersApi = createApi({
   reducerPath: "users",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
-    getUsers: builder.query<User[], string>({
+    getUsers: builder.query<User[], any>({
       query: () => ({
         url: "/users",
         params: {
-          isClose: false,
+          isClosed: false,
         },
       }),
     }),
@@ -40,6 +40,19 @@ export const usersApi = createApi({
           password: `${StorageService.getItem("password")}`,
         },
       }),
+      transformResponse: (response: User[]) => {
+        console.log(
+          StorageService.getItem("password"),
+          StorageService.getItem("email"),
+          response
+        );
+        debugger;
+        return response.filter(
+          (user) =>
+            user.password === `${StorageService.getItem("password")}` &&
+            user.email === `${StorageService.getItem("email")}`
+        );
+      },
     }),
     createUser: builder.mutation<User, NewUser>({
       query: (body) => {
@@ -62,5 +75,9 @@ export const usersApi = createApi({
   }),
 });
 
-export const { useGetUserQuery, useCreateUserMutation, useChangeUserMutation } =
-  usersApi;
+export const {
+  useGetUsersQuery,
+  useGetUserQuery,
+  useCreateUserMutation,
+  useChangeUserMutation,
+} = usersApi;

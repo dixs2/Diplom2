@@ -1,13 +1,14 @@
 .sign-in-form {
+  align-self: center;
+}
+.sign-in-form-content {
   display: flex;
   flex-direction: column;
   width: 450px;
   gap: 30px;
-  align-self: center;
   margin-top: 100px;
   padding: 20px;
   box-shadow: 0px 0px 5px var(--signInForm-box-shadow-color);
-  background-color: var();
 }
 .sign-in-form-email,
 .sign-in-form-password {

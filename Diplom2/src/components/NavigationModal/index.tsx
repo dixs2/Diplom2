@@ -23,6 +23,9 @@ export default function NavigationModal() {
         <NavLink to={routes.myWorldMap} end className="modal-navigation-link">
           My World Map
         </NavLink>
+        <NavLink to={routes.profile} end className="modal-navigation-link">
+          Profile
+        </NavLink>
       </nav>
     </div>
   );

@@ -12,6 +12,8 @@ import { store } from "./store";
 import SelectedCountry from "./pages/SelectedContinent";
 import MyWorldMap from "./pages/MyWorldMap";
 import Registration from "./pages/Registration";
+import Profile from "./pages/Profile";
+import AllUsers from "./pages/AllUsers";
 
 function App() {
   return (
@@ -40,6 +42,14 @@ function App() {
               <Route
                 path={routes.registration}
                 element={<Registration></Registration>}
+              ></Route>
+              <Route
+                path={routes.profile}
+                element={<Profile></Profile>}
+              ></Route>
+              <Route
+                path={routes.allUsers}
+                element={<AllUsers></AllUsers>}
               ></Route>
             </Routes>
           </MainContainer>

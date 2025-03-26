@@ -6,5 +6,7 @@ const routes = {
     `/worldMap/${continent}/${country}`,
   signIn: "/signIn",
   registration: "/registration",
+  profile: "/profile",
+  allUsers: "/allUsers",
 };
 export default routes;

@@ -9,6 +9,8 @@ export interface User {
   email: string;
   password: string;
   name: string;
+  photo: string;
+  isClosed: boolean;
   description: string;
   myAfrica: DataCountry[];
   myAsia: DataCountry[];
@@ -22,6 +24,14 @@ export const usersApi = createApi({
   reducerPath: "users",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
+    getUsers: builder.query<User[], string>({
+      query: () => ({
+        url: "/users",
+        params: {
+          isClose: false,
+        },
+      }),
+    }),
     getUser: builder.query<User[], string>({
       query: () => ({
         url: "/users",
@@ -40,7 +50,17 @@ export const usersApi = createApi({
         };
       },
     }),
+    changeUser: builder.mutation<User, User>({
+      query: (body) => {
+        return {
+          url: `/users/${body.id}`,
+          method: "PUT",
+          body: { ...body },
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetUserQuery, useCreateUserMutation } = usersApi;
+export const { useGetUserQuery, useCreateUserMutation, useChangeUserMutation } =
+  usersApi;

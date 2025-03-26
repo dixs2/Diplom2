@@ -1,13 +1,14 @@
 .registration-form {
+  align-self: center;
+}
+.registration-form-content {
   display: flex;
   flex-direction: column;
   width: 450px;
   gap: 30px;
-  align-self: center;
   margin-top: 100px;
   padding: 20px;
   box-shadow: 0px 0px 5px var(--signInForm-box-shadow-color);
-  background-color: var();
 }
 .registration-form-name,
 .registration-form-password,

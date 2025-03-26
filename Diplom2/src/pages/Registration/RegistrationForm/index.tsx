@@ -4,7 +4,19 @@ import { useCreateUserMutation, User } from "../../../api/endpoints/user";
 import { useNavigate } from "react-router";
 import routes from "../../../routes";
 
-export interface NewUser extends Omit<User, "id"> {}
+export interface NewUser
+  extends Omit<
+    User,
+    | "id"
+    | "isClosed"
+    | "photo"
+    | "myAfrica"
+    | "myAsia"
+    | "myAustralia"
+    | "myEurope"
+    | "myNorthAmerica"
+    | "mySouthAmerica"
+  > {}
 
 export default function RegistrationForm() {
   const [createUser] = useCreateUserMutation();
@@ -15,12 +27,6 @@ export default function RegistrationForm() {
     password: "",
     name: "",
     description: "",
-    myAfrica: [],
-    myAsia: [],
-    myAustralia: [],
-    myEurope: [],
-    myNorthAmerica: [],
-    mySouthAmerica: [],
   });
   const handelChange =
     (key: keyof NewUser) => (event: { target: { value: any } }) => {
@@ -35,40 +41,42 @@ export default function RegistrationForm() {
 
   return (
     <form className="registration-form">
-      <div className="registration-form-name">
-        <label className="registration-form-label">Name</label>
-        <input
-          type="text"
-          name="name"
-          className="registration-form-input"
-          onChange={handelChange("name")}
-        />
+      <div className="registration-form-content">
+        <div className="registration-form-name">
+          <label className="registration-form-label">Name</label>
+          <input
+            type="text"
+            name="name"
+            className="registration-form-input"
+            onChange={handelChange("name")}
+          />
+        </div>
+        <div className="registration-form-email">
+          <label className="registration-form-label">Email</label>
+          <input
+            type="text"
+            name="email"
+            className="registration-form-input"
+            onChange={handelChange("email")}
+          />
+        </div>
+        <div className="registration-form-password">
+          <label className="registration-form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            className="registration-form-input"
+            onChange={handelChange("password")}
+          />
+        </div>
+        <button
+          className="registration-form-button"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Registration
+        </button>
       </div>
-      <div className="registration-form-email">
-        <label className="registration-form-label">Email</label>
-        <input
-          type="text"
-          name="email"
-          className="registration-form-input"
-          onChange={handelChange("email")}
-        />
-      </div>
-      <div className="registration-form-password">
-        <label className="registration-form-label">Password</label>
-        <input
-          type="password"
-          name="password"
-          className="registration-form-input"
-          onChange={handelChange("password")}
-        />
-      </div>
-      <button
-        className="registration-form-button"
-        type="submit"
-        onClick={handleSubmit}
-      >
-        Registration
-      </button>
     </form>
   );
 }

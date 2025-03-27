@@ -1,12 +1,10 @@
 import { useGetUserQuery } from "../../api/endpoints/user";
 import ModalNotAuth from "../../shared/ui/ModalNotAuth";
 import Title from "../../shared/ui/Title";
-import MyProfile from "./MyProfile";
-import ProfileForm from "../ChangeProfile/ChangeProfileForm";
-import "./index.css";
-import MyProfileWorldMap from "./MyProfileWorldMap";
+import MyProfile from "../Profile/MyProfile";
+import ChangeProfileForm from "./ChangeProfileForm";
 
-export default function Profile() {
+export default function ChangeProfile() {
   const { isError, data } = useGetUserQuery("");
 
   const renderProfile = () => {
@@ -18,8 +16,7 @@ export default function Profile() {
       return (
         <section className="profile">
           <Title>Profile</Title>
-          <MyProfile user={data[0]}></MyProfile>
-          <MyProfileWorldMap></MyProfileWorldMap>
+          <ChangeProfileForm user={data[0]}></ChangeProfileForm>
         </section>
       );
     }

@@ -12,7 +12,7 @@ import "./index.scss";
 import { useGetUserQuery } from "../../api/endpoints/user";
 import ModalNotAuth from "../../shared/ui/ModalNotAuth";
 
-const tabsMyWorldMap: Tab[] = [
+export const tabsMyWorldMap: Tab[] = [
   {
     label: "Africa",
     component: <MyAfrica></MyAfrica>,
@@ -42,7 +42,6 @@ const tabsMyWorldMap: Tab[] = [
 export default function MyWorldMap() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { isError } = useGetUserQuery("");
-  console.log();
   const render = () => {
     if (isError) {
       return <ModalNotAuth></ModalNotAuth>;

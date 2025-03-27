@@ -12,6 +12,7 @@
   background-color: rgba(1, 1, 1, 0);
   font-size: 20px;
   border: none;
+  cursor: pointer;
   color: var(--tab-color);
 }
 .tabs-button.active {

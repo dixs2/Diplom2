@@ -8,21 +8,17 @@ import "./index.scss";
 import { useNavigate } from "react-router";
 import routes from "../../../routes";
 
-export default function ProfileForm() {
-  const { data } = useGetUserQuery("");
+interface ChangeProfileFormProps {
+  user: User | undefined;
+}
+
+export default function ChangeProfileForm({ user }: ChangeProfileFormProps) {
   const navigate = useNavigate();
   const [changeUser] = useChangeUserMutation();
-  const [formValue, setFormValue] = useState<User | undefined>();
-
-  useEffect(() => {
-    if (data && data[0]) {
-      setFormValue(data[0]);
-    }
-  }, [data]);
+  const [formValue, setFormValue] = useState<User | undefined>(user);
 
   const handelChange =
     (key: keyof User) => (event: { target: { value: any } }) => {
-      console.log(event);
       setFormValue((prev: any) => ({ ...prev, [key]: event?.target?.value }));
     };
 
@@ -99,8 +95,7 @@ export default function ProfileForm() {
             <button
               className="profile-form-button-submit"
               type="submit"
-              onClick={(event) => {
-                event.preventDefault();
+              onClick={() => {
                 formValue !== undefined ? changeUser(formValue) : undefined;
               }}
             >

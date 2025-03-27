@@ -41,12 +41,6 @@ export const usersApi = createApi({
         },
       }),
       transformResponse: (response: User[]) => {
-        console.log(
-          StorageService.getItem("password"),
-          StorageService.getItem("email"),
-          response
-        );
-        debugger;
         return response.filter(
           (user) =>
             user.password === `${StorageService.getItem("password")}` &&

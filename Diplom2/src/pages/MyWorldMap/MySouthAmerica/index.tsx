@@ -1,8 +1,6 @@
-import CardsCountrys from "../../../components/CardsCountrys";
-import { useGetCountryQuery } from "../../../api/endpoints/worldMap";
-import { useGetUserQuery } from "../../../api/endpoints/user";
-import { DataCountry } from "../../../components/CardCountry/type";
 import { Box } from "@mui/material";
+import { useGetUserQuery } from "../../../api/endpoints/user";
+import CardsCountrys from "../../../components/CardsCountrys";
 
 export default function MySouthAmerica() {
   const { data, isError, status } = useGetUserQuery("");

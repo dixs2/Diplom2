@@ -21,7 +21,6 @@ export function splitByColumUser(continents: User[], colum: number) {
 export default function UsersList() {
   const { data, isError } = useGetUsersQuery("");
   const [column, setColumn] = useState(getCountColumn());
-  let users: User[][] | undefined;
 
   const renderUsersList = () => {
     if (isError) {

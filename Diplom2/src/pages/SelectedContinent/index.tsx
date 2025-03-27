@@ -5,9 +5,7 @@ import SelectedCountryCard from "./SelectedCountryCard";
 export default function SelectedCountry() {
   const { continentTitle, countryTitle } = useParams();
 
-  console.log(countryTitle);
-
-  const { data, isError, status } = useGetCountryByTitleQuery({
+  const { data, isError } = useGetCountryByTitleQuery({
     continent: continentTitle,
     title: countryTitle,
   });

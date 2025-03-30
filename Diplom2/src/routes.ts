@@ -9,5 +9,6 @@ const routes = {
   profile: "/profile",
   changeProfile: "profile/changeProfile",
   allUsers: "/allUsers",
+  user: (userName: string) => `/allUsers/${userName}`,
 };
 export default routes;

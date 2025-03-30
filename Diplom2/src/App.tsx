@@ -15,6 +15,7 @@ import Registration from "./pages/Registration";
 import Profile from "./pages/Profile";
 import AllUsers from "./pages/AllUsers";
 import ChangeProfile from "./pages/ChangeProfile";
+import SelectedUser from "./pages/SelectedUser";
 
 function App() {
   return (
@@ -51,10 +52,13 @@ function App() {
                   element={<ChangeProfile></ChangeProfile>}
                 ></Route>
               </Route>
-              <Route
-                path={routes.allUsers}
-                element={<AllUsers></AllUsers>}
-              ></Route>
+              <Route path={routes.allUsers}>
+                <Route index element={<AllUsers></AllUsers>}></Route>
+                <Route
+                  path=":userName"
+                  element={<SelectedUser></SelectedUser>}
+                ></Route>
+              </Route>
             </Routes>
           </MainContainer>
         </ThemeContextProvider>

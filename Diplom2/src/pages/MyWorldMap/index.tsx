@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router";
 import Tabs, { Tab } from "../../shared/ui/Tabs";
 import TitleSection from "../../shared/ui/Title";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import MyAfrica from "./MyAfrica";
 import MyAsia from "./MyAsia";
 import MyAustralia from "./MyAustralia";
@@ -9,43 +9,75 @@ import MyNorthAmerica from "./MyNorthAmerica";
 import MyEurope from "./MyEurope";
 import MySouthAmerica from "./MySouthAmerica";
 import "./index.scss";
-import { useGetUserQuery } from "../../api/endpoints/user";
+import { useGetUserQuery, User } from "../../api/endpoints/user";
 import ModalNotAuth from "../../shared/ui/ModalNotAuth";
 
-export const tabsMyWorldMap: Tab[] = [
-  {
-    label: "Africa",
-    component: <MyAfrica></MyAfrica>,
-  },
-  {
-    label: "Asia",
-    component: <MyAsia></MyAsia>,
-  },
-  {
-    label: "Australia",
-    component: <MyAustralia></MyAustralia>,
-  },
-  {
-    label: "Europe",
-    component: <MyEurope></MyEurope>,
-  },
-  {
-    label: "North America",
-    component: <MyNorthAmerica></MyNorthAmerica>,
-  },
-  {
-    label: "South America",
-    component: <MySouthAmerica></MySouthAmerica>,
-  },
-];
+export function getTabsMyWorldMap(user: User | undefined) {
+  if (user) {
+    const result: Tab[] = [
+      {
+        label: "Africa",
+        component: <MyAfrica myAfrica={user.myAfrica}></MyAfrica>,
+      },
+      {
+        label: "Asia",
+        component: <MyAsia myAsia={user.myAsia}></MyAsia>,
+      },
+      {
+        label: "Australia",
+        component: <MyAustralia myAustralia={user.myAustralia}></MyAustralia>,
+      },
+      {
+        label: "Europe",
+        component: <MyEurope myEurope={user.myEurope}></MyEurope>,
+      },
+      {
+        label: "North America",
+        component: (
+          <MyNorthAmerica myNorthAmerica={user.myNorthAmerica}></MyNorthAmerica>
+        ),
+      },
+      {
+        label: "South America",
+        component: (
+          <MySouthAmerica mySouthAmerica={user.mySouthAmerica}></MySouthAmerica>
+        ),
+      },
+    ];
+    return result;
+  } else {
+    return [];
+  }
+}
 
 export default function MyWorldMap() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { isError } = useGetUserQuery("");
+  const { data, isError } = useGetUserQuery("");
+  const [tabsMyWorldMap, setTabsMyWorldMap] = useState<Tab[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      setTabsMyWorldMap(getTabsMyWorldMap(data[0]));
+    }
+  }, [data]);
+
+  const onChangeTab = (index: number) => {
+    setSearchParams({
+      continent: tabsMyWorldMap[index].label,
+    });
+  };
+
+  const initialActiveTab = useMemo(() => {
+    return tabsMyWorldMap.findIndex(
+      (tabMyWorldMap) => tabMyWorldMap.label === searchParams.get("continent")
+    );
+  }, []);
+
   const render = () => {
     if (isError) {
       return <ModalNotAuth></ModalNotAuth>;
-    } else {
+    }
+    if (data) {
       return (
         <section className="my-world-map-section">
           <div className="my-world-map-content">
@@ -60,15 +92,6 @@ export default function MyWorldMap() {
       );
     }
   };
-  const onChangeTab = (index: number) => {
-    setSearchParams({ continent: tabsMyWorldMap[index].label });
-  };
-
-  const initialActiveTab = useMemo(() => {
-    return tabsMyWorldMap.findIndex(
-      (tabMyWorldMap) => tabMyWorldMap.label === searchParams.get("continent")
-    );
-  }, []);
 
   return <>{render()}</>;
 }

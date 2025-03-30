@@ -3,6 +3,7 @@
   display: flex;
   gap: 30px;
   align-items: center;
+  cursor: pointer;
 }
 .user-card-photo {
   width: 80px;
@@ -20,4 +21,5 @@
 .user-card-name {
   font-size: 18px;
   font-weight: 600;
+  color: var(--text-color);
 }

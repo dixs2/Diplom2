@@ -48,6 +48,14 @@ export const usersApi = createApi({
         );
       },
     }),
+    getUserByName: builder.query<User[], string>({
+      query: (name) => ({
+        url: "/users",
+        params: {
+          name: name,
+        },
+      }),
+    }),
     createUser: builder.mutation<User, NewUser>({
       query: (body) => {
         return {
@@ -72,6 +80,7 @@ export const usersApi = createApi({
 export const {
   useGetUsersQuery,
   useGetUserQuery,
+  useGetUserByNameQuery,
   useCreateUserMutation,
   useChangeUserMutation,
 } = usersApi;

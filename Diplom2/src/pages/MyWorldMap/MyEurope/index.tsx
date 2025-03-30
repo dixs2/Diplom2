@@ -1,23 +1,19 @@
 import CardsCountrys from "../../../components/CardsCountrys";
-import { useGetCountryQuery } from "../../../api/endpoints/worldMap";
-import { useGetUserQuery } from "../../../api/endpoints/user";
 import { DataCountry } from "../../../components/CardCountry/type";
 import { Box } from "@mui/material";
 
-export default function MyEurope() {
-  const { data, isError, status } = useGetUserQuery("");
+interface MyEuropeProps {
+  myEurope: DataCountry[];
+}
+
+export default function MyEurope({ myEurope }: MyEuropeProps) {
   const renderPosts = () => {
-    if (isError) {
-      return isError;
+    if (myEurope.length === 0) {
+      return (
+        <Box textAlign={"center"}>"You have not been to this continent"</Box>
+      );
     }
-    if (data) {
-      if (data[0].myEurope.length === 0) {
-        return (
-          <Box textAlign={"center"}>"You have not been to this continent"</Box>
-        );
-      }
-      return <CardsCountrys countries={data[0].myEurope} />;
-    }
+    return <CardsCountrys countries={myEurope} />;
   };
 
   return <>{renderPosts()}</>;

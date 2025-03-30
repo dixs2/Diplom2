@@ -1,23 +1,21 @@
 import CardsCountrys from "../../../components/CardsCountrys";
-import { useGetCountryQuery } from "../../../api/endpoints/worldMap";
-import { useGetUserQuery } from "../../../api/endpoints/user";
 import { DataCountry } from "../../../components/CardCountry/type";
 import { Box } from "@mui/material";
 
-export default function MyNorthAmerica() {
-  const { data, isError } = useGetUserQuery("");
+interface MyNorthAmericaProps {
+  myNorthAmerica: DataCountry[];
+}
+
+export default function MyNorthAmerica({
+  myNorthAmerica,
+}: MyNorthAmericaProps) {
   const renderPosts = () => {
-    if (isError) {
-      return isError;
+    if (myNorthAmerica.length === 0) {
+      return (
+        <Box textAlign={"center"}>"You have not been to this continent"</Box>
+      );
     }
-    if (data) {
-      if (data[0].myNorthAmerica.length === 0) {
-        return (
-          <Box textAlign={"center"}>"You have not been to this continent"</Box>
-        );
-      }
-      return <CardsCountrys countries={data[0].myNorthAmerica} />;
-    }
+    return <CardsCountrys countries={myNorthAmerica} />;
   };
 
   return <>{renderPosts()}</>;

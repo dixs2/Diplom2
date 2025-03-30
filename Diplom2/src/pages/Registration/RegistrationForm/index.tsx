@@ -49,6 +49,7 @@ export default function RegistrationForm() {
             name="name"
             className="registration-form-input"
             onChange={handelChange("name")}
+            required
           />
         </div>
         <div className="registration-form-email">
@@ -58,6 +59,7 @@ export default function RegistrationForm() {
             name="email"
             className="registration-form-input"
             onChange={handelChange("email")}
+            required
           />
         </div>
         <div className="registration-form-password">
@@ -67,6 +69,7 @@ export default function RegistrationForm() {
             name="password"
             className="registration-form-input"
             onChange={handelChange("password")}
+            required
           />
         </div>
         <button

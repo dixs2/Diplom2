@@ -33,6 +33,7 @@ export default function SingInForm() {
             name="email"
             className="sign-in-form-input"
             onChange={handelChange("email")}
+            required
           />
         </div>
         <div className="sign-in-form-password">
@@ -42,6 +43,7 @@ export default function SingInForm() {
             name="password"
             className="sign-in-form-input"
             onChange={handelChange("password")}
+            required
           />
         </div>
         <button

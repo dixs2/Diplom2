@@ -6,3 +6,13 @@
   flex-direction: column;
   gap: 30px;
 }
+.my-world-map-open-modal {
+  background-color: rgba(240, 248, 255, 0);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  align-self: flex-start;
+  padding: 8px 10px;
+  border: none;
+  cursor: pointer;
+}

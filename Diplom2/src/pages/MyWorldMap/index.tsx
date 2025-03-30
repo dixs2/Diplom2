@@ -11,6 +11,9 @@ import MySouthAmerica from "./MySouthAmerica";
 import "./index.scss";
 import { useGetUserQuery, User } from "../../api/endpoints/user";
 import ModalNotAuth from "../../shared/ui/ModalNotAuth";
+import NewCountryForm from "../../components/NewCountryForm";
+import { useDispatch } from "react-redux";
+import { showAddModal } from "../../store/addModal";
 
 export function getTabsMyWorldMap(user: User | undefined) {
   if (user) {
@@ -54,6 +57,7 @@ export default function MyWorldMap() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { data, isError } = useGetUserQuery("");
   const [tabsMyWorldMap, setTabsMyWorldMap] = useState<Tab[]>([]);
+  const dispath = useDispatch();
 
   useEffect(() => {
     if (data) {
@@ -82,6 +86,15 @@ export default function MyWorldMap() {
         <section className="my-world-map-section">
           <div className="my-world-map-content">
             <TitleSection>The continent i visited</TitleSection>
+            <button
+              className="my-world-map-open-modal"
+              onClick={() => {
+                dispath(showAddModal());
+              }}
+            >
+              + Add a New Continent
+            </button>
+            <NewCountryForm account={data[0]}></NewCountryForm>
             <Tabs
               tabs={tabsMyWorldMap}
               onChangeTab={onChangeTab}

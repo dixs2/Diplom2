@@ -91,8 +91,7 @@ export default function NewCountryForm({ account }: NewCountryFormProps) {
     id: "",
     title: "",
     description: "",
-    photo:
-      "https://i.pinimg.com/474x/14/7c/27/147c27851365bb3fef2a871b248c7252.jpg",
+    photo: "",
     isFavorite: false,
     continent: "",
   });
@@ -173,7 +172,17 @@ export default function NewCountryForm({ account }: NewCountryFormProps) {
         <button
           type="submit"
           className="new-contry-form-add"
-          onClick={onSubmit}
+          onClick={(event) => {
+            event.preventDefault();
+            let key = getUserKey(continet);
+            setUser((prev: any) => {
+              return {
+                ...prev,
+                [key]: [...prev[key], formValue],
+              };
+            });
+            changeUser(user);
+          }}
         >
           Add a new County
         </button>

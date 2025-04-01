@@ -35,7 +35,7 @@ export default function UsersList() {
             return (
               <div className="users-cards-column">
                 {users2.map((user) => {
-                  return <UserCard user={user}></UserCard>;
+                  return <UserCard user={user} key={user.id}></UserCard>;
                 })}
               </div>
             );

@@ -14,7 +14,7 @@ export default function Header() {
         </div>
         <div className="main-header-content-right">
           <ButtomTheme></ButtomTheme>
-          <UserProfile userName={"Seva Tupeka"}></UserProfile>
+          <UserProfile></UserProfile>
         </div>
       </div>
     </header>

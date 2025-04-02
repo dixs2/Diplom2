@@ -95,7 +95,8 @@ export default function ChangeProfileForm({ user }: ChangeProfileFormProps) {
             <button
               className="profile-form-button-submit"
               type="submit"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 formValue !== undefined ? changeUser(formValue) : undefined;
               }}
             >

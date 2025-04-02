@@ -11,7 +11,7 @@ import MySouthAmerica from "./MySouthAmerica";
 import "./index.scss";
 import { useGetUserQuery, User } from "../../api/endpoints/user";
 import ModalNotAuth from "../../shared/ui/ModalNotAuth";
-import NewCountryForm from "../../components/NewCountryForm";
+import NewCountryForm from "../../components/CreateCountryForm";
 import { useDispatch } from "react-redux";
 import { showAddModal } from "../../store/addModal";
 

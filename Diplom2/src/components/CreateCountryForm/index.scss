@@ -1,0 +1,110 @@
+.create-contry-modal-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px var(--signInForm-box-shadow-color);
+  background-color: var(--modal-navigation-link-color);
+  z-index: 100;
+}
+.create-contry-modal-content {
+  padding: 10px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-contry-modal-close {
+  align-self: flex-end;
+  border: none;
+  padding: 8px;
+  background-color: rgba(102, 51, 153, 0);
+  cursor: pointer;
+
+  i {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+}
+.create-contry-modal-main-title {
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+.create-contry-modal-main-content {
+  width: 100%;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  margin-bottom: 35px;
+
+  .create-contry-modal-head {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+
+    .create-contry-modal-head-left {
+      width: 30%;
+    }
+    .create-contry-modal-head-right {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
+.create-contry-modal-select {
+  width: 100%;
+  #demo-simple-select {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+
+    &:active {
+      border: 1px solid var(--text-color);
+    }
+  }
+}
+.create-contry-modal-photo,
+.create-contry-modal-title,
+.create-contry-modal-description {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.create-contry-modal-label {
+  font-size: 14px;
+  color: var(--text-color);
+}
+.create-contry-modal-input {
+  font-size: 18px;
+  font-weight: 400;
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.87);
+  width: 100%;
+}
+.create-contry-modal-textarea {
+  width: 100%;
+  height: 150px;
+  resize: none;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid var(--text-color);
+}
+.create-contry-modal-add {
+  width: 80%;
+  background-color: var(--button-bg);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 10px;
+  color: var(--button-text-color);
+}

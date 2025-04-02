@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router";
 import routes from "../../../routes";
+import {
+  useGetUserByEmailAndPassQuery,
+  useGetUserQuery,
+  User,
+} from "../../../api/endpoints/user";
+import { Box } from "@mui/material";
 
 interface SingForm {
   email: string;
@@ -17,8 +23,16 @@ export default function SingInForm() {
     (key: keyof SingForm) => (event: { target: { value: any } }) => {
       setFormValue((prev) => ({ ...prev, [key]: event?.target?.value }));
     };
+  const { data, isError } = useGetUserQuery("");
+  const [user, setUser] = useState<User>();
 
-  const handleSubmit = () => {
+  useEffect(() => {
+    if (data && data[0]) {
+      setUser(data[0]);
+    }
+  }, [data]);
+
+  const handleSubmit = (event: any) => {
     localStorage.setItem("email", `"${formValue.email}"`);
     localStorage.setItem("password", `"${formValue.password}"`);
   };
@@ -35,6 +49,7 @@ export default function SingInForm() {
             onChange={handelChange("email")}
             required
           />
+          {isError ? <Box color={"red"}>Incorrect data entered</Box> : ""}
         </div>
         <div className="sign-in-form-password">
           <label className="sign-in-form-label">Password</label>
@@ -45,6 +60,7 @@ export default function SingInForm() {
             onChange={handelChange("password")}
             required
           />
+          {isError ? <Box color={"red"}>Incorrect data entered</Box> : ""}
         </div>
         <button
           className="sign-in-form-button"

@@ -20,6 +20,11 @@ export interface User {
   mySouthAmerica: DataCountry[];
 }
 
+export interface getUserByEmailAndPass {
+  email: string;
+  password: string;
+}
+
 export const usersApi = createApi({
   reducerPath: "users",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
@@ -40,13 +45,15 @@ export const usersApi = createApi({
           password: `${StorageService.getItem("password")}`,
         },
       }),
-      transformResponse: (response: User[]) => {
-        return response.filter(
-          (user) =>
-            user.password === `${StorageService.getItem("password")}` &&
-            user.email === `${StorageService.getItem("email")}`
-        );
-      },
+    }),
+    getUserByEmailAndPass: builder.query<User[], getUserByEmailAndPass>({
+      query: (params) => ({
+        url: "/users",
+        params: {
+          email: params.email,
+          password: params.password,
+        },
+      }),
     }),
     getUserByName: builder.query<User[], string>({
       query: (name) => ({
@@ -73,6 +80,17 @@ export const usersApi = createApi({
           body: { ...body },
         };
       },
+      async onQueryStarted(arg, { queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          if (data) {
+            debugger;
+            location.reload();
+          }
+        } catch (error) {
+          console.error("Ошибка при обновлении данных:", error);
+        }
+      },
     }),
   }),
 });
@@ -80,6 +98,7 @@ export const usersApi = createApi({
 export const {
   useGetUsersQuery,
   useGetUserQuery,
+  useGetUserByEmailAndPassQuery,
   useGetUserByNameQuery,
   useCreateUserMutation,
   useChangeUserMutation,

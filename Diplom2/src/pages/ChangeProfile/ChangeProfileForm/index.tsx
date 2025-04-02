@@ -25,11 +25,23 @@ export default function ChangeProfileForm({ user }: ChangeProfileFormProps) {
   return (
     <form name="profileForm" className="profile-form">
       <div className="profile-form-content">
-        <div className="profile-form-header">
-          {/* <div className="profile-form-photo">
-            <img src={user?.photo} alt="" />
-          </div> */}
-          <div className="profile-form-data">
+        <div className="profile-form-head">
+          <div className="profile-form-left">
+            <div className="profile-form-photo">
+              <img src={formValue?.photo} alt="" />
+            </div>
+            <div className="profile-form-photo-input">
+              <label className="profile-form-label">URL Photo</label>
+              <input
+                type="text"
+                name="photo"
+                className="profile-form-input"
+                onChange={handelChange("photo")}
+                value={formValue?.photo}
+              />
+            </div>
+          </div>
+          <div className="profile-form-right">
             <div className="profile-form-closed">
               <label className="profile-form-closed-label">
                 {formValue?.isClosed !== true

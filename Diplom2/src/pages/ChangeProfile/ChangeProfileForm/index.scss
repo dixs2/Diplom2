@@ -8,22 +8,43 @@
   gap: 30px;
   padding: 20px;
 }
-.profile-form-header {
+.profile-form-head {
   display: flex;
   gap: 15px;
+  align-items: center;
 }
-.profile-form-photo {
-  width: 40%;
+.profile-form-left {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  .profile-form-photo {
+    align-self: flex-start;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
 }
-.profile-form-data {
+.profile-form-right {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 60%;
+  width: 70%;
 
   .profile-form-closed,
   .profile-form-name,
-  .profile-form-email {
+  .profile-form-email,
+  .profile-form-photo-input {
     display: flex;
     flex-direction: column;
     gap: 5px;

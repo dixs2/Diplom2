@@ -12,7 +12,9 @@ export default function MySouthAmerica({
   const renderPosts = () => {
     if (mySouthAmerica.length === 0) {
       return (
-        <Box textAlign={"center"}>"You have not been to this continent"</Box>
+        <Box textAlign={"center"} fontSize={"18px"} fontWeight={"600"}>
+          "This content is still empty"
+        </Box>
       );
     }
     return <CardsCountrys countries={mySouthAmerica} />;

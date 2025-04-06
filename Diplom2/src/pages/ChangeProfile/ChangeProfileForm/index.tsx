@@ -7,6 +7,8 @@ import {
 import "./index.scss";
 import { useNavigate } from "react-router";
 import routes from "../../../routes";
+import { BASE_URL } from "../../../constant";
+import { Box } from "@mui/material";
 
 interface ChangeProfileFormProps {
   user: User | undefined;
@@ -16,11 +18,39 @@ export default function ChangeProfileForm({ user }: ChangeProfileFormProps) {
   const navigate = useNavigate();
   const [changeUser] = useChangeUserMutation();
   const [formValue, setFormValue] = useState<User | undefined>(user);
+  const [errorName, serErrorName] = useState(false);
 
   const handelChange =
     (key: keyof User) => (event: { target: { value: any } }) => {
       setFormValue((prev: any) => ({ ...prev, [key]: event?.target?.value }));
     };
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
+    const resName = await fetch(`${BASE_URL}/users?name=${formValue?.name}`);
+    const usersByName: User[] = await resName.json();
+
+    if (resName.ok) {
+      const isAuthName = [];
+      if (resName.ok) {
+        const isAuth = usersByName.find(
+          (user: User) => user.name === formValue?.name
+        );
+        if (isAuth) isAuthName.push(isAuth);
+
+        if (isAuthName) {
+          serErrorName(true);
+        }
+      }
+      if (!isAuthName.length) {
+        formValue !== undefined ? changeUser(formValue) : undefined;
+        navigate(routes.profile);
+      }
+      debugger;
+    } else {
+      formValue !== undefined ? changeUser(formValue) : undefined;
+      navigate(routes.profile);
+    }
+  };
 
   return (
     <form name="profileForm" className="profile-form">
@@ -70,16 +100,7 @@ export default function ChangeProfileForm({ user }: ChangeProfileFormProps) {
                 onChange={handelChange("name")}
                 value={formValue?.name}
               />
-            </div>
-            <div className="profile-form-email">
-              <label className="profile-form-label">Email</label>
-              <input
-                type="text"
-                name="email"
-                className="profile-form-input"
-                onChange={handelChange("email")}
-                value={formValue?.email}
-              />
+              {errorName ? <Box color={"red"}>This name is taken</Box> : ""}
             </div>
           </div>
         </div>
@@ -107,10 +128,7 @@ export default function ChangeProfileForm({ user }: ChangeProfileFormProps) {
             <button
               className="profile-form-button-submit"
               type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                formValue !== undefined ? changeUser(formValue) : undefined;
-              }}
+              onClick={onSubmit}
             >
               Change
             </button>

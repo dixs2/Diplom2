@@ -12,7 +12,9 @@ export default function MyNorthAmerica({
   const renderPosts = () => {
     if (myNorthAmerica.length === 0) {
       return (
-        <Box textAlign={"center"}>"You have not been to this continent"</Box>
+        <Box textAlign={"center"} fontSize={"18px"} fontWeight={"600"}>
+          "This content is still empty"
+        </Box>
       );
     }
     return <CardsCountrys countries={myNorthAmerica} />;

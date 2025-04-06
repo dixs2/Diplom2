@@ -20,9 +20,8 @@ export interface User {
   mySouthAmerica: DataCountry[];
 }
 
-export interface getUserByEmailAndPass {
+export interface getUserByEmail {
   email: string;
-  password: string;
 }
 
 export const usersApi = createApi({
@@ -46,12 +45,11 @@ export const usersApi = createApi({
         },
       }),
     }),
-    getUserByEmailAndPass: builder.query<User[], getUserByEmailAndPass>({
+    getUserByEmail: builder.query<User[], getUserByEmail>({
       query: (params) => ({
         url: "/users",
         params: {
           email: params.email,
-          password: params.password,
         },
       }),
     }),
@@ -98,7 +96,7 @@ export const usersApi = createApi({
 export const {
   useGetUsersQuery,
   useGetUserQuery,
-  useGetUserByEmailAndPassQuery,
+  useGetUserByEmailQuery,
   useGetUserByNameQuery,
   useCreateUserMutation,
   useChangeUserMutation,

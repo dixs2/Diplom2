@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import "./index.scss";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import routes from "../../../routes";
-import {
-  useGetUserByEmailAndPassQuery,
-  useGetUserQuery,
-  User,
-} from "../../../api/endpoints/user";
+import { useGetUserQuery, User } from "../../../api/endpoints/user";
 import { Box } from "@mui/material";
 
 interface SingForm {
@@ -19,12 +15,15 @@ export default function SingInForm() {
     email: "",
     password: "",
   });
+  const nav = useNavigate();
   const handelChange =
     (key: keyof SingForm) => (event: { target: { value: any } }) => {
       setFormValue((prev) => ({ ...prev, [key]: event?.target?.value }));
     };
   const { data, isError } = useGetUserQuery("");
   const [user, setUser] = useState<User>();
+  let isEmptyEmail = localStorage.getItem("email");
+  let isEmptyPassword = localStorage.getItem("password");
 
   useEffect(() => {
     if (data && data[0]) {
@@ -49,7 +48,11 @@ export default function SingInForm() {
             onChange={handelChange("email")}
             required
           />
-          {isError ? <Box color={"red"}>Incorrect data entered</Box> : ""}
+          {isError && (isEmptyEmail || isEmptyPassword) ? (
+            <Box color={"red"}>Incorrect data entered</Box>
+          ) : (
+            ""
+          )}
         </div>
         <div className="sign-in-form-password">
           <label className="sign-in-form-label">Password</label>
@@ -60,7 +63,11 @@ export default function SingInForm() {
             onChange={handelChange("password")}
             required
           />
-          {isError ? <Box color={"red"}>Incorrect data entered</Box> : ""}
+          {isError && (isEmptyEmail || isEmptyPassword) ? (
+            <Box color={"red"}>Incorrect data entered</Box>
+          ) : (
+            ""
+          )}
         </div>
         <button
           className="sign-in-form-button"

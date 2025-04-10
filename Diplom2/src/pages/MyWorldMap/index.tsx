@@ -15,35 +15,70 @@ import NewCountryForm from "../../components/CreateCountryForm";
 import { useDispatch } from "react-redux";
 import { showAddModal } from "../../store/addModal";
 
-export function getTabsMyWorldMap(user: User | undefined) {
+export function getTabsMyWorldMap(
+  user: User | undefined,
+  variant: "all" | "my" | "user"
+) {
   if (user) {
     const result: Tab[] = [
       {
         label: "Africa",
-        component: <MyAfrica myAfrica={user.myAfrica}></MyAfrica>,
+        component: (
+          <MyAfrica
+            myAfrica={user.myAfrica}
+            userName={user.name}
+            variant={variant}
+          ></MyAfrica>
+        ),
       },
       {
         label: "Asia",
-        component: <MyAsia myAsia={user.myAsia}></MyAsia>,
+        component: (
+          <MyAsia
+            myAsia={user.myAsia}
+            userName={user.name}
+            variant={variant}
+          ></MyAsia>
+        ),
       },
       {
         label: "Australia",
-        component: <MyAustralia myAustralia={user.myAustralia}></MyAustralia>,
+        component: (
+          <MyAustralia
+            myAustralia={user.myAustralia}
+            userName={user.name}
+            variant={variant}
+          ></MyAustralia>
+        ),
       },
       {
         label: "Europe",
-        component: <MyEurope myEurope={user.myEurope}></MyEurope>,
+        component: (
+          <MyEurope
+            myEurope={user.myEurope}
+            userName={user.name}
+            variant={variant}
+          ></MyEurope>
+        ),
       },
       {
         label: "North America",
         component: (
-          <MyNorthAmerica myNorthAmerica={user.myNorthAmerica}></MyNorthAmerica>
+          <MyNorthAmerica
+            myNorthAmerica={user.myNorthAmerica}
+            userName={user.name}
+            variant={variant}
+          ></MyNorthAmerica>
         ),
       },
       {
         label: "South America",
         component: (
-          <MySouthAmerica mySouthAmerica={user.mySouthAmerica}></MySouthAmerica>
+          <MySouthAmerica
+            mySouthAmerica={user.mySouthAmerica}
+            userName={user.name}
+            variant={variant}
+          ></MySouthAmerica>
         ),
       },
     ];
@@ -61,7 +96,7 @@ export default function MyWorldMap() {
 
   useEffect(() => {
     if (data) {
-      setTabsMyWorldMap(getTabsMyWorldMap(data[0]));
+      setTabsMyWorldMap(getTabsMyWorldMap(data[0], "my"));
     }
   }, [data]);
 

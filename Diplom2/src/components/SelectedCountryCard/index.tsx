@@ -1,8 +1,8 @@
-import { DataCountry } from "../../../components/CardCountry/type";
+import { DataCountry } from "../CardCountry/type";
 import "./index.scss";
 
 interface SelectedContinentCardProps {
-  country: DataCountry;
+  country: DataCountry | undefined;
 }
 
 export default function SelectedContinentCard({
@@ -11,13 +11,13 @@ export default function SelectedContinentCard({
   return (
     <section className="selected-continent">
       <div className="selected-continent-card">
-        <h2 className="selected-continent-card-title">{country.title}</h2>
+        <h2 className="selected-continent-card-title">{country?.title}</h2>
         <div className="selected-continent-card-country">
           <div className="selected-continent-card-img">
-            <img src={country.photo} alt="#" />
+            <img src={country?.photo} alt="#" />
           </div>
           <div className="selected-continent-card-text">
-            <p>{country.description}</p>
+            <p>{country?.description}</p>
           </div>
         </div>
       </div>

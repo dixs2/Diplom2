@@ -19,6 +19,8 @@ export function splitByColum(continents: DataCountry[], colum: number) {
 
 interface CardsCountrysProps {
   countries: DataCountry[];
+  variant?: "all" | "my" | "user";
+  userName?: string;
 }
 
 export const getCountColumn = () => {
@@ -39,7 +41,11 @@ export const getCountColumn = () => {
   return 4;
 };
 
-export default function CardsCountrys({ countries }: CardsCountrysProps) {
+export default function CardsCountrys({
+  countries,
+  variant = "all",
+  userName,
+}: CardsCountrysProps) {
   const [column, setColumn] = useState(getCountColumn());
 
   const newViewContinents = splitByColum(countries, column);
@@ -73,6 +79,8 @@ export default function CardsCountrys({ countries }: CardsCountrysProps) {
                 <CardContinent
                   country={country}
                   key={country.id}
+                  variant={variant}
+                  userName={userName}
                 ></CardContinent>
               );
             })}

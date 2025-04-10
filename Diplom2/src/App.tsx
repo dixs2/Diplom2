@@ -16,6 +16,8 @@ import Profile from "./pages/Profile";
 import AllUsers from "./pages/AllUsers";
 import ChangeProfile from "./pages/ChangeProfile";
 import SelectedUser from "./pages/SelectedUser";
+import SelectedMyCountry from "./pages/SelectedMyContinent";
+import SelectedUserCountry from "./pages/SelectedUserContinent";
 
 function App() {
   return (
@@ -36,8 +38,8 @@ function App() {
               <Route path={routes.myWorldMap}>
                 <Route index element={<MyWorldMap></MyWorldMap>} />
                 <Route
-                  path=":continentTitle/:countryTitle"
-                  element={<SelectedCountry></SelectedCountry>}
+                  path=":myContinentTitle/:myCountryTitle"
+                  element={<SelectedMyCountry></SelectedMyCountry>}
                 ></Route>
               </Route>
               <Route path={routes.signIn} element={<SingIn></SingIn>}></Route>
@@ -57,6 +59,10 @@ function App() {
                 <Route
                   path=":userName"
                   element={<SelectedUser></SelectedUser>}
+                ></Route>
+                <Route
+                  path=":userName/:userContinentTitle/:userCountryTitle"
+                  element={<SelectedUserCountry></SelectedUserCountry>}
                 ></Route>
               </Route>
             </Routes>

@@ -4,9 +4,11 @@ import { Box } from "@mui/material";
 
 interface MyAsiaProps {
   myAsia: DataCountry[];
+  userName?: string;
+  variant: "my" | "all" | "user";
 }
 
-export default function MyAfrica({ myAsia }: MyAsiaProps) {
+export default function MyAfrica({ myAsia, userName, variant }: MyAsiaProps) {
   const renderPosts = () => {
     if (myAsia.length === 0) {
       return (
@@ -15,7 +17,9 @@ export default function MyAfrica({ myAsia }: MyAsiaProps) {
         </Box>
       );
     }
-    return <CardsCountrys countries={myAsia} />;
+    return (
+      <CardsCountrys countries={myAsia} variant={variant} userName={userName} />
+    );
   };
 
   return <>{renderPosts()}</>;

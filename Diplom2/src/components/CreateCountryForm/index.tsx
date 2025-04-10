@@ -15,7 +15,15 @@ import { hideAddModal } from "../../store/addModal";
 import { useForm } from "react-hook-form";
 import ImageUpload from "../ImageUploader";
 
-function getUserKey(continet: string): keyof User {
+export function getUserKey(
+  continet: string
+):
+  | "myAfrica"
+  | "myAsia"
+  | "myAustralia"
+  | "myEurope"
+  | "myNorthAmerica"
+  | "mySouthAmerica" {
   switch (continet) {
     case "Africa":
       return "myAfrica";
@@ -100,7 +108,11 @@ export default function CreateCountryForm({ account }: CreateCountryFormProps) {
   const handleChangeSelect = (event: SelectChangeEvent) => {
     setContinent(event.target.value as string);
     let id = getLastIdCountry(user, event.target.value);
-    setFormValue((prev: any) => ({ ...prev, id: id, continent: continet }));
+    setFormValue((prev: any) => ({
+      ...prev,
+      id: id,
+      continent: event.target.value as string,
+    }));
   };
 
   const handleChange =
@@ -116,6 +128,7 @@ export default function CreateCountryForm({ account }: CreateCountryFormProps) {
         ...prev,
         [key]: [...prev[key], formValue],
       };
+      debugger;
       changeUser(updatedUser);
       return updatedUser;
     });
@@ -148,7 +161,6 @@ export default function CreateCountryForm({ account }: CreateCountryFormProps) {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={continet}
-                    label="Continent"
                     onChange={handleChangeSelect}
                     required
                   >

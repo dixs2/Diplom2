@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useGetCountryByTitleQuery } from "../../api/endpoints/worldMap";
-import SelectedCountryCard from "./SelectedCountryCard";
+import SelectedCountryCard from "../../components/SelectedCountryCard";
 
 export default function SelectedCountry() {
   const { continentTitle, countryTitle } = useParams();

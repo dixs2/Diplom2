@@ -4,10 +4,14 @@ import { Box } from "@mui/material";
 
 interface MySouthAmericaProps {
   mySouthAmerica: DataCountry[];
+  userName?: string;
+  variant: "my" | "all" | "user";
 }
 
 export default function MySouthAmerica({
   mySouthAmerica,
+  userName,
+  variant,
 }: MySouthAmericaProps) {
   const renderPosts = () => {
     if (mySouthAmerica.length === 0) {
@@ -17,7 +21,13 @@ export default function MySouthAmerica({
         </Box>
       );
     }
-    return <CardsCountrys countries={mySouthAmerica} />;
+    return (
+      <CardsCountrys
+        countries={mySouthAmerica}
+        variant={variant}
+        userName={userName}
+      />
+    );
   };
 
   return <>{renderPosts()}</>;

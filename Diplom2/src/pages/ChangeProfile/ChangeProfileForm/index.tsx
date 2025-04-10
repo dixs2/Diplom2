@@ -26,26 +26,31 @@ export default function ChangeProfileForm({ user }: ChangeProfileFormProps) {
     };
   const onSubmit = async (e: any) => {
     e.preventDefault();
-    const resName = await fetch(`${BASE_URL}/users?name=${formValue?.name}`);
-    const usersByName: User[] = await resName.json();
+    if (user?.name !== formValue?.name) {
+      const resName = await fetch(`${BASE_URL}/users?name=${formValue?.name}`);
+      const usersByName: User[] = await resName.json();
 
-    if (resName.ok) {
-      const isAuthName = [];
       if (resName.ok) {
-        const isAuth = usersByName.find(
-          (user: User) => user.name === formValue?.name
-        );
-        if (isAuth) isAuthName.push(isAuth);
+        const isAuthName = [];
+        if (resName.ok) {
+          const isAuth = usersByName.find(
+            (user: User) => user.name === formValue?.name
+          );
+          if (isAuth) isAuthName.push(isAuth);
 
-        if (isAuthName) {
-          serErrorName(true);
+          if (isAuthName) {
+            serErrorName(true);
+          }
         }
-      }
-      if (!isAuthName.length) {
+        if (!isAuthName.length) {
+          formValue !== undefined ? changeUser(formValue) : undefined;
+          navigate(routes.profile);
+        }
+        debugger;
+      } else {
         formValue !== undefined ? changeUser(formValue) : undefined;
         navigate(routes.profile);
       }
-      debugger;
     } else {
       formValue !== undefined ? changeUser(formValue) : undefined;
       navigate(routes.profile);

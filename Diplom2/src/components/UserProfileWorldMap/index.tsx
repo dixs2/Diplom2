@@ -14,7 +14,7 @@ export default function UserProfileWorldMap({
 }: UserProfileWorldMapProps) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const tabsMyWorldMap = getTabsMyWorldMap(user);
+  const tabsMyWorldMap = getTabsMyWorldMap(user, "user");
 
   const onChangeTab = (index: number) => {
     setSearchParams({ continent: tabsMyWorldMap[index].label });

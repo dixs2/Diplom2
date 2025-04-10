@@ -4,9 +4,15 @@ import { Box } from "@mui/material";
 
 interface MyEuropeProps {
   myEurope: DataCountry[];
+  userName?: string;
+  variant: "my" | "all" | "user";
 }
 
-export default function MyEurope({ myEurope }: MyEuropeProps) {
+export default function MyEurope({
+  myEurope,
+  userName,
+  variant,
+}: MyEuropeProps) {
   const renderPosts = () => {
     if (myEurope.length === 0) {
       return (
@@ -15,7 +21,13 @@ export default function MyEurope({ myEurope }: MyEuropeProps) {
         </Box>
       );
     }
-    return <CardsCountrys countries={myEurope} />;
+    return (
+      <CardsCountrys
+        countries={myEurope}
+        variant={variant}
+        userName={userName}
+      />
+    );
   };
 
   return <>{renderPosts()}</>;
